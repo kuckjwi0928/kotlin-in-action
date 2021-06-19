@@ -40,6 +40,6 @@ fun listIteration() {
     }
 }
 
-fun isLetter(c: Char) = c in 'a'..'z' || c in 'A'..'Z'
+fun isLetter(c: Char) = c.toLowerCase() in 'a'..'z'
 
 fun isNotDigit(c: Char) = c !in '0'..'9'
