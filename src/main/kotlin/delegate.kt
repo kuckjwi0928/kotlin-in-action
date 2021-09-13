@@ -10,9 +10,9 @@ class CountingSet<T> (
         objectsAdded++
         return innerSet.add(element)
     }
-    override fun addAll(collection: Collection<T>): Boolean {
-        objectsAdded += collection.size
-        return innerSet.addAll(collection)
+    override fun addAll(elements: Collection<T>): Boolean {
+        objectsAdded += elements.size
+        return innerSet.addAll(elements)
     }
 }
 
