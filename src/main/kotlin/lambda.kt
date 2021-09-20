@@ -47,4 +47,19 @@ fun main() {
         .map(People::name)
         .filter { it.startsWith("ku") }
         .toList())
+
+    val naturalNumbers = generateSequence(0) { it + 1 }
+    println(naturalNumbers.takeWhile{ it <= 100 }.sum())
+
+    fun alphabet(): String {
+        val stringBuilder = StringBuilder()
+        return with(stringBuilder) {
+            for (letter in 'A'..'Z') {
+                this.append(letter)
+            }
+            this.toString()
+        }
+    }
+
+    println(alphabet())
 }
