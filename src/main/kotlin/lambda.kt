@@ -52,14 +52,26 @@ fun main() {
     println(naturalNumbers.takeWhile{ it <= 100 }.sum())
 
     fun alphabet(): String {
-        val stringBuilder = StringBuilder()
-        return with(stringBuilder) {
+        return with(StringBuilder()) {
             for (letter in 'A'..'Z') {
-                this.append(letter)
+                append(letter)
             }
-            this.toString()
+            toString()
         }
     }
-
     println(alphabet())
+
+    fun alphabet2() = StringBuilder().apply {
+        for (letter in 'A'..'Z') {
+            append(letter)
+        }
+    }.toString()
+    println(alphabet2())
+
+    fun alphabet3() = buildString {
+        for (letter in 'A'..'Z') {
+            append(letter)
+        }
+    }
+    println(alphabet3())
 }
