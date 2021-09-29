@@ -5,7 +5,7 @@ import java.time.LocalDate
 // * : times
 // / : div
 // % : rem
-private data class Point(var x: Int, var y: Int): Comparable<Point> {
+data class Point(var x: Int, var y: Int): Comparable<Point> {
     operator fun plus(other: Point): Point {
         return Point(x + other.x, y + other.y)
     }
@@ -78,4 +78,8 @@ fun main() {
     val vacation = now..now.plusDays(10)
     println(now.plusWeeks(1) in vacation)
     (0..10).forEach { print(it) }
+    println()
+    for (c in "abc") {
+        println(c)
+    }
 }
