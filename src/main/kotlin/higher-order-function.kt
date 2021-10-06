@@ -1,3 +1,7 @@
+import java.io.BufferedReader
+import java.io.File
+import java.io.FileReader
+
 enum class Delivery { STANDARD, EXPEDITED }
 
 class Order(val itemCount: Int)
@@ -18,10 +22,14 @@ data class SiteVisit(
 )
 
 fun List<SiteVisit>.averageDurationFor(predicate: (SiteVisit) -> Boolean) = filter(predicate).map(SiteVisit::duration).average()
+
+fun readFirstLineFromFile(path: String): String {
+    BufferedReader(FileReader(path)).use { br -> return br.readLine() }
+}
+
 fun main() {
     val calc = getShippingCostCalculator(Delivery.EXPEDITED)
     println(calc(Order(3)))
-
 
     val log = listOf(
         SiteVisit("/", 34.0, OS.WINDOWS),
@@ -32,4 +40,18 @@ fun main() {
     )
 
     println(log.averageDurationFor{ it.os in setOf(OS.ANDROID, OS.IOS) })
+
+    listOf("a", "b", "c").forEach {
+        if (it == "a") {
+            return@forEach
+        }
+        println(it)
+    }
+
+    listOf("a", "b", "c").forEach(fun (a){
+        if (a == "a") {
+            return
+        }
+        println(a)
+    })
 }
