@@ -1,5 +1,3 @@
-import java.lang.Appendable
-import java.lang.StringBuilder
 import java.util.*
 
 fun <T> List<T>.penultimate(): T = this[size - 2]
@@ -25,6 +23,18 @@ inline fun <reified T> isA(value: Any) = value is T
 
 inline fun <reified T> loadService() = ServiceLoader.load(T::class.java)
 
+fun <T: R, R> copyData(source: MutableList<T>, destination: MutableList<in T>) {
+    for (item in source) {
+        destination.add(item)
+    }
+}
+
+fun printFirst(list: List<*>) {
+    if (list.isNotEmpty()) {
+        println(list.first())
+    }
+}
+
 fun main() {
     println(listOf(1, 2, 3, 4, 5, 6).penultimate())
     println(oneHalf(3))
@@ -39,4 +49,10 @@ fun main() {
     println(isA<String>("abc"))
     println(isA<Int>(123))
     println(listOf("one", 2, "three").filterIsInstance<String>())
+
+    val ints = mutableListOf(1, 2, 3)
+    val anyItems = mutableListOf<Any>()
+    copyData(ints, anyItems)
+    println(anyItems)
+    printFirst(listOf(1, 2, 3))
 }

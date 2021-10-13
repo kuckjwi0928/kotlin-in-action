@@ -16,3 +16,6 @@ repositories {
 tasks.withType<KotlinCompile>() {
     kotlinOptions.jvmTarget = "1.8"
 }
+dependencies {
+    implementation(kotlin("reflect"))
+}
